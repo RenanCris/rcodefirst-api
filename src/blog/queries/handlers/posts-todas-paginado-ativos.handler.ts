@@ -26,7 +26,7 @@ export class PostsQueryTodasPaginadoAtivoHandler implements IQueryHandler<PostQu
       .where("post.ativo = :ativo "+ criterioTag + criterioTexto +" ", { ativo: query.ativo
         , tag: query.tag
         , texto: `%${query.texto}%`   })
-      .skip((query.take) - 1 * query.skip)
+      .skip(query.skip)
       .take(query.take)
       .orderBy("post.dataPostagem","DESC")
     .getMany();
